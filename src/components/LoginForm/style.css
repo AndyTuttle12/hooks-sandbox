@@ -1,0 +1,17 @@
+.login-form {
+  width: auto;
+  height: fit-content;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #61dafb;
+  color: #282c34;
+}
+
+.input {
+  margin: 10px;
+  outline: none;
+}
