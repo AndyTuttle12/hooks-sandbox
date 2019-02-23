@@ -7,9 +7,12 @@ const LoginForm = props => {
   const [userValue, setUserValue] = useState("");
   const [passValue, setPassValue] = useState("");
   const [formSubmit, setFormSubmit] = useState(false);
+  const [formReset, setFormReset] = useState(false);
   useEffect(() => {
-    console.log(userValue);
-  }, [props]);
+    setUserValue("");
+    setPassValue("");
+    return () => setFormReset(false);
+  }, [formSubmit, formReset]);
   return (
     <div className="login-form">
       <label htmlFor="user-input">User Name:</label>
@@ -29,7 +32,20 @@ const LoginForm = props => {
         onChange={e => setPassValue(e.target.value)}
         onKeyPress={e => (isEnterKey(e.key) ? setFormSubmit(true) : "")}
       />
-      {`Submit form? ${formSubmit}`}
+      <button
+        className="submit-button"
+        type="button"
+        onClick={() => setFormSubmit(true)}
+      >
+        Submit
+      </button>
+      <button
+        className="reset-button"
+        type="button"
+        onClick={() => setFormReset(true)}
+      >
+        Reset
+      </button>
     </div>
   );
 };

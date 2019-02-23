@@ -15,3 +15,23 @@
   margin: 10px;
   outline: none;
 }
+
+.submit-button,
+.reset-button {
+  width: 60px;
+  height: 20px;
+  border: none;
+  background-color: #282c34;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  margin: 5px;
+}
+
+.reset-button {
+  background-color: transparent;
+  border: 1px solid #282c34;
+  color: #282c34;
+}
