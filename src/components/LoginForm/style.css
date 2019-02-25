@@ -1,7 +1,7 @@
 .login-form {
   width: auto;
   height: fit-content;
-  padding: 10px;
+  padding: 10px 20px;
   margin: 10px;
   position: relative;
   display: flex;
@@ -9,6 +9,7 @@
   justify-content: center;
   background-color: #61dafb;
   color: #282c34;
+  border-radius: 30px;
 }
 
 .input {
