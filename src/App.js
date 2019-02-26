@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import LoginForm from "./components/LoginForm";
 
@@ -8,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <LoginForm />
+          <LoginForm logo="logo.svg" />
         </header>
       </div>
     );
