@@ -24,14 +24,30 @@
 .reset-button {
   width: 60px;
   height: 20px;
-  border: none;
-  background-color: #282c34;
-  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
   margin: 5px;
+  padding: auto 10px;
+  border-radius: 10px;
+  transition: transform 0.15ds;
+}
+
+.submit-button:hover,
+.reset-button:hover {
+  transform: scale(1.05);
+}
+
+.submit-button:active,
+.reset-button:active {
+  opacity: 0.5;
+}
+
+.submit-button {
+  border: none;
+  background-color: #282c34;
+  color: #fff;
 }
 
 .reset-button {

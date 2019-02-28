@@ -10,14 +10,19 @@ const LoginForm = props => {
   const [formReset, setFormReset] = useState(false);
   const [logo, setLogo] = useState(null);
   const importLogo = () => {
-    import(`../../logo.svg`)
+    import(`../../${props.logo}`)
       .then(l => setLogo(l.default))
-      .catch(e => JSON.stringify(e));
+      .catch(e => console.error(JSON.stringify(e)));
+  };
+  const submitForm = () => {
+    console.log({ formData: { userValue, passValue } });
+    setFormSubmit(true);
+    setFormReset(true);
   };
   useEffect(() => {
     setUserValue("");
     setPassValue("");
-    if (!logo) {
+    if (!logo && props.logo) {
       importLogo();
     }
     return () => setFormReset(false);
@@ -36,7 +41,7 @@ const LoginForm = props => {
           className="input"
           value={userValue}
           onChange={e => setUserValue(e.target.value)}
-          onKeyPress={e => (isEnterKey(e.key) ? setFormSubmit(true) : "")}
+          onKeyPress={e => (isEnterKey(e.key) ? submitForm() : "")}
         />
         <label htmlFor="pass-input">Password:</label>
         <input
@@ -45,12 +50,12 @@ const LoginForm = props => {
           className="input"
           value={passValue}
           onChange={e => setPassValue(e.target.value)}
-          onKeyPress={e => (isEnterKey(e.key) ? setFormSubmit(true) : "")}
+          onKeyPress={e => (isEnterKey(e.key) ? submitForm() : "")}
         />
         <button
           className="submit-button"
           type="button"
-          onClick={() => setFormSubmit(true)}
+          onClick={() => submitForm()}
         >
           Submit
         </button>
