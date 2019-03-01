@@ -55,3 +55,8 @@
   border: 1px solid #282c34;
   color: #282c34;
 }
+
+.registration-message a {
+  color: #fff;
+  text-decoration: none;
+}

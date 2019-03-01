@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <LoginForm logo="reactLogo.svg" />
+          <LoginForm logo="reactLogo.svg" registration="#" />
         </header>
       </div>
     );

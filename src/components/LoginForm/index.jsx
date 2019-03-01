@@ -67,6 +67,11 @@ const LoginForm = props => {
           Reset
         </button>
       </div>
+      {props.registration && (
+        <div className="registration-message">
+          <a href={props.registration}>Register</a>
+        </div>
+      )}
     </>
   );
 };
