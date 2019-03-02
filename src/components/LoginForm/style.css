@@ -56,7 +56,18 @@
   color: #282c34;
 }
 
+.registration-message {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 220px;
+}
+
 .registration-message a {
   color: #fff;
   text-decoration: none;
+}
+
+.registration-message a:hover {
+  color: #61dafb;
 }

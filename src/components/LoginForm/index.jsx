@@ -69,6 +69,7 @@ const LoginForm = props => {
       </div>
       {props.registration && (
         <div className="registration-message">
+          {props.registerMessage && <span>{props.registerMessage} </span>}
           <a href={props.registration}>Register</a>
         </div>
       )}
