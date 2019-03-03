@@ -8,6 +8,7 @@ const LoginForm = props => {
   const [passValue, setPassValue] = useState("");
   const [formSubmit, setFormSubmit] = useState(false);
   const [formReset, setFormReset] = useState(false);
+  const [key, setKey] = useState("someKey");
   const [logo, setLogo] = useState(null);
   const importLogo = () => {
     import(`../../${props.logo}`)
@@ -15,7 +16,8 @@ const LoginForm = props => {
       .catch(e => console.error(JSON.stringify(e)));
   };
   const submitForm = () => {
-    console.log({ formData: { userValue, passValue } });
+    const formData = { userValue, passValue, key };
+    console.log({ formData });
     setFormSubmit(true);
     setFormReset(true);
   };
