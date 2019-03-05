@@ -9,7 +9,7 @@ class App extends Component {
         <header className="App-header">
           <LoginForm
             logo="reactLogo.svg"
-            registration="#"
+            registration={1}
             registerMessage="Don't have a login? "
           />
         </header>

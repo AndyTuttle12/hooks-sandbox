@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./style.css";
 
 const isEnterKey = key => key === "Enter";
 
-const LoginForm = props => {
+const formProps = {
+  logo: PropTypes.string,
+  registration: PropTypes.string,
+  registerMessage: PropTypes.string
+};
+
+const LoginForm = (props: formProps) => {
   const [userValue, setUserValue] = useState("");
   const [passValue, setPassValue] = useState("");
   const [formSubmit, setFormSubmit] = useState(false);
@@ -20,6 +27,7 @@ const LoginForm = props => {
     console.log({ formData });
     setFormSubmit(true);
     setFormReset(true);
+    setKey("newKey");
   };
   useEffect(() => {
     setUserValue("");
