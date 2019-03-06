@@ -30,7 +30,7 @@ const LoginForm = (props: formProps) => {
     setKey("newKey");
     props.submitForm(formData, result => {
       if (result.code === 200) {
-        console.log("Successfully Logged IN!");
+        console.log(result.message);
       } else {
         console.log("problem logging in...");
         console.log(JSON.stringify(formData));
