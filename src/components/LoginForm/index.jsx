@@ -28,6 +28,14 @@ const LoginForm = (props: formProps) => {
     setFormSubmit(true);
     setFormReset(true);
     setKey("newKey");
+    props.submitForm(formData, result => {
+      if (result.code === 200) {
+        console.log("Successfully Logged IN!");
+      } else {
+        console.log("problem logging in...");
+        console.log(JSON.stringify(formData));
+      }
+    });
   };
   useEffect(() => {
     setUserValue("");
