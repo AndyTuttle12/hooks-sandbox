@@ -10,6 +10,7 @@
   background-color: #61dafb;
   color: #282c34;
   border-radius: 30px;
+  flex-wrap: wrap;
 }
 
 .input {
