@@ -4,12 +4,14 @@ import LoginForm from "./components/LoginForm";
 
 class App extends Component {
   login = formData => {
-    console.log(`logging in with ${formData.userValue}`);
     const prom = new Promise((resolve, reject) => {
       return setTimeout(() => {
         const success = Math.ceil(Math.random() * 10);
         if (success > 5) {
-          resolve({ code: 200, message: "Successfully logged in." });
+          resolve({
+            code: 200,
+            message: `${formData.userValue} successfully logged in.`
+          });
         } else {
           reject({ code: 500, message: "Something went wrong. Try again." });
         }

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import "./style.css";
 
 const isEnterKey = key => key === "Enter";
 
-const formProps = {
-  logo: PropTypes.string,
-  registration: PropTypes.string,
-  registerMessage: PropTypes.string
-};
+// const formProps = {
+//   logo: PropTypes.string,
+//   registration: PropTypes.string,
+//   registerMessage: PropTypes.string
+// };
 
-const LoginForm = (props: formProps) => {
+const LoginForm = props => {
   const [userValue, setUserValue] = useState("");
   const [passValue, setPassValue] = useState("");
   const [formSubmit, setFormSubmit] = useState(false);
@@ -24,16 +23,12 @@ const LoginForm = (props: formProps) => {
   };
   const submitForm = () => {
     const formData = { userValue, passValue, key };
-    console.log({ formData });
     setFormSubmit(true);
     setFormReset(true);
     setKey("newKey");
     props.submitForm(formData, result => {
       if (result.code === 200) {
         console.log(result.message);
-      } else {
-        console.log("problem logging in...");
-        console.log(JSON.stringify(formData));
       }
     });
   };
