@@ -3,12 +3,6 @@ import "./style.css";
 
 const isEnterKey = key => key === "Enter";
 
-// const formProps = {
-//   logo: PropTypes.string,
-//   registration: PropTypes.string,
-//   registerMessage: PropTypes.string
-// };
-
 const LoginForm = props => {
   const [userValue, setUserValue] = useState("");
   const [passValue, setPassValue] = useState("");
@@ -28,7 +22,7 @@ const LoginForm = props => {
     setKey("newKey");
     props.submitForm(formData, result => {
       if (result.code === 200) {
-        console.log(result.message);
+        // return new notification with login message.
       }
     });
   };
