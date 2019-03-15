@@ -10,6 +10,9 @@ const LoginForm = props => {
   const [formReset, setFormReset] = useState(false);
   const [key, setKey] = useState("someKey");
   const [logo, setLogo] = useState(null);
+  const [statusActive, setStatusActive] = useState(false);
+  const [statusType, setStatusType] = useState("");
+  const [status, setStatus] = useState("");
   const importLogo = () => {
     import(`../../${props.logo}`)
       .then(l => setLogo(l.default))
@@ -23,6 +26,23 @@ const LoginForm = props => {
     props.submitForm(formData, result => {
       if (result.code === 200) {
         // return new notification with login message.
+        setStatusActive(true);
+        setStatus(result.message);
+        setStatusType("success");
+        setTimeout(() => {
+          setStatusActive(false);
+          setStatus("");
+          setStatusType("");
+        }, 2800);
+      } else {
+        setStatusActive(true);
+        setStatus(result.message);
+        setStatusType("fail");
+        setTimeout(() => {
+          setStatusActive(false);
+          setStatus("");
+          setStatusType("");
+        }, 2800);
       }
     });
   };
@@ -41,6 +61,13 @@ const LoginForm = props => {
           <img className="App-logo" src={logo} alt="test" />
         </div>
       )}
+      <div
+        className={`login-status${" " + statusType}${
+          statusActive ? " active" : ""
+        }`}
+      >
+        {status}
+      </div>
       <div className="login-form">
         <label htmlFor="user-input">User Name:</label>
         <input

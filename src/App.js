@@ -31,7 +31,10 @@ class App extends Component {
             submitForm={(formData, callback) => {
               this.login(formData)
                 .then(result => callback(result))
-                .catch(e => console.error(e));
+                .catch(e => {
+                  console.error(e);
+                  return callback(e);
+                });
             }}
           />
         </header>
