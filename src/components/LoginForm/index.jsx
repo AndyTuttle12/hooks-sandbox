@@ -24,20 +24,16 @@ const LoginForm = props => {
     setFormReset(true);
     setKey("newKey");
     props.submitForm(formData, result => {
+      let status = "";
       if (result.code === 200) {
-        // return new notification with login message.
-        setStatusActive(true);
-        setStatus(result.message);
-        setStatusType("success");
-        setTimeout(() => {
-          setStatusActive(false);
-          setStatus("");
-          setStatusType("");
-        }, 2800);
+        status = "success";
       } else {
+        status = "fail";
+      }
+      if (result.message) {
         setStatusActive(true);
         setStatus(result.message);
-        setStatusType("fail");
+        setStatusType(status);
         setTimeout(() => {
           setStatusActive(false);
           setStatus("");
