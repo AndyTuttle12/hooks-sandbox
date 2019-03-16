@@ -28,6 +28,10 @@ class App extends Component {
             logo="reactLogo.svg"
             registration={1}
             registerMessage="Don't have a login? "
+            validation={{
+              userValue: "([0-9]+|andy|test)",
+              passValue: "([0-9]+|andy|test)"
+            }}
             submitForm={(formData, callback) => {
               this.login(formData)
                 .then(result => callback(result))

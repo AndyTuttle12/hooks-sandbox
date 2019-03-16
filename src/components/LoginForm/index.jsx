@@ -13,34 +13,54 @@ const LoginForm = props => {
   const [statusActive, setStatusActive] = useState(false);
   const [statusType, setStatusType] = useState("");
   const [status, setStatus] = useState("");
+  const [valid, setValid] = useState(null);
   const importLogo = () => {
     import(`../../${props.logo}`)
       .then(l => setLogo(l.default))
       .catch(e => console.error(JSON.stringify(e)));
+  };
+  const validateForm = values => {
+    let formValid = true;
+    const rules = Object.keys(props.validation);
+    for (let rule of rules) {
+      if (values.hasOwnProperty(rule)) {
+        const regexComparison = new RegExp(props.validation[rule], "gmi");
+        formValid = regexComparison.test(values[rule]);
+        if (!formValid) {
+          console.log("INVALID FORM");
+          setValid(false);
+        }
+      }
+    }
+    if (formValid) {
+      console.log("VALID FORM");
+      setValid(true);
+      props.submitForm(values, result => {
+        let status = "";
+        if (result.code === 200) {
+          status = "success";
+        } else {
+          status = "fail";
+        }
+        if (result.message) {
+          setStatusActive(true);
+          setStatus(result.message);
+          setStatusType(status);
+          setTimeout(() => {
+            setStatusActive(false);
+            setStatus("");
+            setStatusType("");
+          }, 2800);
+        }
+      });
+    }
   };
   const submitForm = () => {
     const formData = { userValue, passValue, key };
     setFormSubmit(true);
     setFormReset(true);
     setKey("newKey");
-    props.submitForm(formData, result => {
-      let status = "";
-      if (result.code === 200) {
-        status = "success";
-      } else {
-        status = "fail";
-      }
-      if (result.message) {
-        setStatusActive(true);
-        setStatus(result.message);
-        setStatusType(status);
-        setTimeout(() => {
-          setStatusActive(false);
-          setStatus("");
-          setStatusType("");
-        }, 2800);
-      }
-    });
+    validateForm(formData);
   };
   useEffect(() => {
     setUserValue("");
@@ -63,6 +83,9 @@ const LoginForm = props => {
         }`}
       >
         {status}
+      </div>
+      <div className={`valid-status fail${valid === false ? " active" : ""}`}>
+        Invalid Input.
       </div>
       <div className="login-form">
         <label htmlFor="user-input">User Name:</label>
