@@ -27,13 +27,11 @@ const LoginForm = props => {
         const regexComparison = new RegExp(props.validation[rule], "gmi");
         formValid = regexComparison.test(values[rule]);
         if (!formValid) {
-          console.log("INVALID FORM");
           setValid(false);
         }
       }
     }
     if (formValid) {
-      console.log("VALID FORM");
       setValid(true);
       props.submitForm(values, result => {
         let status = "";
@@ -53,6 +51,13 @@ const LoginForm = props => {
           }, 2800);
         }
       });
+    } else if (formValid === false) {
+      setTimeout(() => {
+        setStatusActive(false);
+        setStatus("");
+        setStatusType("");
+        setValid(true);
+      }, 2800);
     }
   };
   const submitForm = () => {
